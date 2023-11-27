@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<head>
+	<title>
+		Newton's Laws of Motion
+	</title>
+	<link rel="stylesheet" href="index.css">
+</head>
+<body>
+   <h1>Newton's Laws of Motion</h1>
+   <p>Simulation of gravity force to the object, with applying directed force(with an angle)</p>
+   <canvas width="910px" height="490px"></canvas><br>
+   <div id="ui">
+	  <div id="ui_plane_angle" class="ui_element">
+		 <table>
+			 <tr>
+			    <label>Plane angle:</label>
+			 </tr>
+			 <tr>
+			    <td>
+			       <button id="ui_plane_angle_button_left">l</button>
+			    </td>
+			    <td>
+			       <button id="ui_plane_angle_button_right">r</button>
+			    </td>
+			 </tr>
+		 </table>
+      </div>
+      <div id="ui_force_angle" class="ui_element">
+		 <table>
+			 <tr>
+			    <label>Force angle:</label>
+			 </tr>
+			 <tr>
+			    <td>
+			       <button id="ui_force_angle_button_left">l</button>
+			    </td>
+			    <td>
+			       <button id="ui_force_angle_button_right">r</button>
+			    </td>
+			 </tr>
+		 </table>
+      </div>
+      <div id="ui_force"    class="ui_element">
+		 <table>
+			 <tr>
+			    <label>Force magnitude:</label>
+			 </tr>
+			 <tr>
+				<td>
+				   <input type="text" id="force" value="0.0"></input>
+				</td>
+			 </tr>
+		 </table>
+      </div>
+      <div id="ui_mass"    class="ui_element">
+		 <table>
+			 <tr>
+			    <label>Mass:</label>
+			 </tr>
+			 <tr>
+				<td>
+				   <input type="text" id="mass" value="0.06"></input>
+				</td>
+			 </tr>
+		 </table>
+      </div>
+      <div id="ui_friction"    class="ui_element">
+		 <table>
+			 <tr>
+			    <label>Friction coefficient:</label>
+			 </tr>
+			 <tr>
+				<td>
+				   <input type="text" id="friction" value="0.28"></input>
+				</td>
+			 </tr>
+		 </table>
+      </div>
+        <div id="ui_acceleration_coef"    class="ui_element">
+		 <table>
+			 <tr>
+			    <label>Acceleration coef:</label>
+			 </tr>
+			 <tr>
+				<td>
+				   <input type="text" id="acceleration_coef" value="1"></input>
+				</td>
+			 </tr>
+		 </table>
+      </div>
+      <div id="ui_start"       class="ui_element">
+	     <button id="ui_start_button">start</button>
+	  </div>
+   </div>
+</body>
+<script src="glmjs/glm-js.min.js"></script>
+<script src="glmjs/helper.js"></script>
+<script src="objects_logic/time.js"></script>
+<script src="objects_logic/plane.js"></script>
+<script src="objects_logic/cube.js"></script>
+<script src="objects_logic/force.js"></script>
+<script src="objects_render/shader.js"></script>
+<script src="objects_render/program.js"></script>
+<script src="objects_render/buffers.js"></script>
+<script src="index.js"></script>
+</html>
