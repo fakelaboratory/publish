@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<head>
+	<title>
+		Momentum
+	</title>
+	<link rel="stylesheet" href="index.css">
+</head>
+<body>
+   <h1>Momentum</h1>
+   <p>Simulation of transfering momentum, with splitting to displacement and rotating</p>
+   <canvas width="910px" height="490px"></canvas><br>
+   <div id="ui">
+	  <div id="ui_cube_position" class="ui_element">
+		 <table>
+			 <tr>
+			    <label>Cube position:</label>
+			 </tr>
+			 <tr>
+			    <td>
+			       <button id="ui_cube_position_button_left">l</button>
+			    </td>
+			    <td>
+			       <button id="ui_cube_position_button_right">r</button>
+			    </td>
+			 </tr>
+		 </table>
+      </div>
+      <div id="ui_cube_speed"    class="ui_element">
+		 <table>
+			 <tr>
+			    <label>Cube speed:</label>
+			 </tr>
+			 <tr>
+				<td>
+				   <input type="text" id="cube_speed" value="1.0"></input>
+				</td>
+			 </tr>
+		 </table>
+      </div>
+      <div id="ui_cube_mass"    class="ui_element">
+		 <table>
+			 <tr>
+			    <label>Cube mass:</label>
+			 </tr>
+			 <tr>
+				<td>
+				   <input type="text" id="cube_mass" value="3.0"></input>
+				</td>
+			 </tr>
+		 </table>
+      </div>
+      <div id="ui_block_mass"    class="ui_element">
+		 <table>
+			 <tr>
+			    <label>Block mass:</label>
+			 </tr>
+			 <tr>
+				<td>
+				   <input type="text" id="block_mass" value="1.0"></input>
+				</td>
+			 </tr>
+		 </table>
+      </div>
+      <div id="ui_friction_coef"    class="ui_element">
+		 <table>
+			 <tr>
+			    <label>Friction coef:</label>
+			 </tr>
+			 <tr>
+				<td>
+				   <input type="text" id="friction_coef" value="0.2"></input>
+				</td>
+			 </tr>
+		 </table>
+      </div>
+      <div id="ui_start"       class="ui_element">
+	     <button id="ui_start_button">start</button>
+	  </div>
+	  <div id="ui_stop"       class="ui_element">
+	     <button id="ui_stop_button">stop</button>
+	  </div>
+   </div>
+</body>
+<script src="glmjs/glm-js.min.js"></script>
+<script src="glmjs/helper.js"></script>
+<script src="objects_logic/plane.js"></script>
+<script src="objects_logic/cube.js"></script>
+<script src="objects_logic/block.js"></script>
+<script src="objects_logic/time.js"></script>
+<script src="objects_render/shader.js"></script>
+<script src="objects_render/program.js"></script>
+<script src="objects_render/buffers.js"></script>
+<script src="index.js"></script>
+</html>
