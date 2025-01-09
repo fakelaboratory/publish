@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Mosaic</title>
+		<style>
+			body { margin: 0; }
+		</style>
+		<script type="importmap">
+		{
+			"imports": {
+			"three": "https://cdn.jsdelivr.net/npm/three@v0.149.0/build/three.module.js",
+			"three/addons/": "https://cdn.jsdelivr.net/npm/three@v0.149.0/examples/jsm/"
+			}
+		}
+		</script>
+	</head>
+	<body>
+	</body>
+	<script type="module">
+		import * as THREE from 'three';
+		import { VRButton } from 'three/addons/webxr/VRButton.js';
+
+		const scene = new THREE.Scene();
+		const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+
+		const renderer = new THREE.WebGLRenderer();
+		renderer.setSize( window.innerWidth, window.innerHeight );
+		renderer.setAnimationLoop( animate );
+		renderer.xr.enabled = true;
+		document.body.appendChild( renderer.domElement );
+		document.body.appendChild( VRButton.createButton( renderer ) );
+
+
+		let geometries = [];
+		let materials  = [];
+		let cubes      = [];
+		let n = 2;
+		let r = 5;
+		for (let j = -3; j < 10; j++) {
+			for (let i = 0; i < 30; i++) {
+				let geometry = new THREE.BoxGeometry( 1, 1, 1 );
+				let color    =  new THREE.Color().setRGB( Math.random(), Math.random(), Math.random() );
+				let material = new THREE.MeshBasicMaterial( { color: color } );
+				let cube = new THREE.Mesh( geometry, material );
+				let angle = i*Math.PI/15;
+					cube.position.set(r*Math.sin(angle),j,-r*Math.cos(angle))
+					cube.rotation.set(0,-angle,0)
+				cubes.push(cube);
+				scene.add( cube );
+			}
+		}
+
+
+		camera.position.z = 0;
+
+		function animate() {
+
+			let random_rate = 100;
+			for (let i = 0; i < cubes.length; i++){
+				let random = Math.floor(Math.random()*random_rate);
+				if(random == 0){
+					let color    =  new THREE.Color().setRGB( Math.random(), Math.random(), Math.random() );
+					let material = new THREE.MeshBasicMaterial( { color: color } );
+					cubes[i].material = material;
+				}
+			}
+
+			renderer.render( scene, camera );
+
+		}
+
+	</script>
+</html>

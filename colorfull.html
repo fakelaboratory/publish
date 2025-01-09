@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Colorfull</title>
+		<style>
+			body { margin: 0; }
+		</style>
+		<script type="importmap">
+		{
+			"imports": {
+			"three": "https://cdn.jsdelivr.net/npm/three@v0.149.0/build/three.module.js",
+			"three/addons/": "https://cdn.jsdelivr.net/npm/three@v0.149.0/examples/jsm/"
+			}
+		}
+		</script>
+	</head>
+	<body>
+	</body>
+	<script type="module">
+		import * as THREE from 'three';
+		import { VRButton } from 'three/addons/webxr/VRButton.js';
+
+		const scene = new THREE.Scene();
+		const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+
+		const renderer = new THREE.WebGLRenderer();
+		renderer.setSize( window.innerWidth, window.innerHeight );
+		renderer.setAnimationLoop( animate );
+		renderer.xr.enabled = true;
+		document.body.appendChild( renderer.domElement );
+		document.body.appendChild( VRButton.createButton( renderer ) );
+
+
+		let d_r = 0.0;
+		let d_g = 0.49;
+		let d_b = 0.99;
+
+		function animate() {
+
+			let color = new THREE.Color().setRGB( 0.0+d_r, 0.0+d_g, 0.0+d_b );
+
+			let direction = new THREE.Vector3();
+			renderer.xr.getCamera().getWorldDirection(direction);
+
+			renderer.setClearColor(color, 1.0);
+			renderer.render( scene, camera );
+
+			d_r = direction.x;
+			d_g = direction.y;
+			d_b = direction.z;
+
+		}
+	</script>
+</html>
